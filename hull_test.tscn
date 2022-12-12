@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://upqhdei51rt0"]
+
+[ext_resource type="Script" path="res://Hull_Test.gd" id="1_lk03y"]
+
+[node name="Hull_Test" type="CSGMesh3D"]
+script = ExtResource("1_lk03y")
