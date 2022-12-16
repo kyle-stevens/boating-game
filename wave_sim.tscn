@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvxwbedubcrmm"]
+
+[ext_resource type="Script" path="res://WaveSim.gd" id="1_pw8x8"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_wad2p"]
+custom_aabb = AABB(15, 1, 15, 0, 0, 0)
+
+[node name="WaveSim" type="Node3D"]
+script = ExtResource("1_pw8x8")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+mesh = SubResource("ArrayMesh_wad2p")

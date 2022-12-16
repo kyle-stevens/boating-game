@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://drpy5q47llenn"]
+[gd_scene load_steps=9 format=3 uid="uid://drpy5q47llenn"]
 
 [ext_resource type="Script" path="res://maps/endless_ocean.gd" id="1_n05v0"]
-[ext_resource type="PackedScene" uid="uid://c2uitl4dm3vg3" path="res://floating_object_test.tscn" id="2_gso86"]
+[ext_resource type="PackedScene" uid="uid://7mk7jaoalo44" path="res://test_hull_2.tscn" id="2_o4op6"]
+[ext_resource type="PackedScene" uid="uid://bai1j18ut82hp" path="res://character_body_3d.tscn" id="3_yiw8e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dldkt"]
 
@@ -16,12 +17,11 @@ ambient_light_color = Color(1, 1, 1, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_b2bjh"]
 size = Vector2(25, 25)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_i1573"]
+size = Vector3(25, 1, 25)
+
 [node name="EndlessOcean" type="Node3D"]
 script = ExtResource("1_n05v0")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.965432, 0.260656, 0, -0.260656, 0.965432, 0, 0.28803, 17.5747)
-current = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.46623, 8.133, 0)
@@ -31,11 +31,18 @@ omni_range = 46.7608
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ji547")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-gravity_scale = 0.0
+[node name="RigidBody3D" type="StaticBody3D" parent="."]
+collision_mask = 0
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("PlaneMesh_b2bjh")
 
-[node name="floating-object-test" parent="." instance=ExtResource("2_gso86")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.10174, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_i1573")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("3_yiw8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
+
+[node name="TestHull2" parent="." instance=ExtResource("2_o4op6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)

@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://upqhdei51rt0" path="res://hull_test.tscn" id="2_nyivf"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_7r8hs"]
+radius = 1.0
+height = 2.0
 
 [node name="floating-object-test" type="Node3D"]
 script = ExtResource("1_rd2ji")

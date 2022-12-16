@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://7mk7jaoalo44"]
+
+[ext_resource type="Script" path="res://test_hull_2.gd" id="1_wvyxy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qv5m2"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fp71p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4gak4"]
+size = Vector3(2, 0.188532, 2)
+
+[node name="TestHull2" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 7
+linear_damp = 2.0
+script = ExtResource("1_wvyxy")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 2, 0, 0, 0, 5, 0, 0.244728, 0)
+mesh = SubResource("BoxMesh_qv5m2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, -2.18557e-07, -1, 0, 5, -4.37114e-08, 0, 0.25, 0)
+shape = SubResource("CylinderShape3D_fp71p")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00617, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.755696, 0)
+shape = SubResource("BoxShape3D_4gak4")

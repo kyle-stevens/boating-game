@@ -11,7 +11,7 @@ var buoyant_force = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.buoyant_force = (1) * 9.8 * volume/2 #assume that half of hull volume is under water.
+	self.buoyant_force = (1) * 9.8 * volume #assume that half of hull volume is under water.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

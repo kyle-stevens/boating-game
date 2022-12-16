@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bai1j18ut82hp"]
+
+[ext_resource type="Script" path="res://character_body_3d.gd" id="1_sjb5f"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n3ft0"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_sjb5f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_n3ft0")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CollisionShape3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.885531, 0.464579, 0, -0.464579, 0.885531, 0, 1.25838, 1.52263)
