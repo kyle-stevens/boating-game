@@ -1,21 +1,29 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
+#const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var time = 0.0
 
+@export var turning_degrees = 0.005
+@export var SPEED = 5.0
+
+func _ready():
+	print(position)
 
 func _physics_process(delta):
 	
-	velocity.z = 0
-	position.y = 5 * sin(delta)
-	print(5*sin(delta)) #cannot use delta for this needs to be some sort of time function
+	velocity.x = (0 * global_transform.basis.z).x
+	velocity.z = (0 * global_transform.basis.z).z
+	#position.y = -0.35 + (sin(time) + 1)
+	#print(-0.35 + (sin(time) + 1)) #cannot use delta for this needs to be some sort of time function
+	#time += 0.01
 	# Add the gravity.
-	#if not is_on_floor():
-	#	velocity.y -= gravity * delta
+	if not is_on_floor():
+		velocity.y -= gravity * delta
 
 	# Handle Jump.
 	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -37,5 +45,5 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
 		self.rotate_y(-0.005)
 	if Input.is_action_pressed("ui_up")	:
-		velocity.z = SPEED
+		velocity = SPEED * global_transform.basis.z
 	move_and_slide()

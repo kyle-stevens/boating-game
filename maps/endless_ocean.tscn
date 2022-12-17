@@ -16,7 +16,7 @@ ambient_light_color = Color(1, 1, 1, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_b2bjh"]
 size = Vector2(25, 25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_i1573"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_sit0g"]
 size = Vector3(25, 1, 25)
 
 [node name="EndlessOcean" type="Node3D"]
@@ -30,15 +30,17 @@ omni_range = 46.7608
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ji547")
 
-[node name="RigidBody3D" type="StaticBody3D" parent="."]
-collision_mask = 0
-
-[node name="CSGMesh3D" type="CSGMesh3D" parent="RigidBody3D"]
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("PlaneMesh_b2bjh")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-shape = SubResource("BoxShape3D_i1573")
+metadata/collision = "Does not need collision"
 
 [node name="Boat" parent="." instance=ExtResource("2_7b1t4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+turning_degrees = 0.01
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_sit0g")
