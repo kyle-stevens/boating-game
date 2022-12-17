@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://drpy5q47llenn"]
+[gd_scene load_steps=8 format=3 uid="uid://drpy5q47llenn"]
 
 [ext_resource type="Script" path="res://maps/endless_ocean.gd" id="1_n05v0"]
-[ext_resource type="PackedScene" uid="uid://7mk7jaoalo44" path="res://test_hull_2.tscn" id="2_o4op6"]
-[ext_resource type="PackedScene" uid="uid://bai1j18ut82hp" path="res://character_body_3d.tscn" id="3_yiw8e"]
+[ext_resource type="PackedScene" uid="uid://dvwbshkyb32ex" path="res://boat.tscn" id="2_7b1t4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dldkt"]
 
@@ -41,8 +40,5 @@ mesh = SubResource("PlaneMesh_b2bjh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("BoxShape3D_i1573")
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("3_yiw8e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
-
-[node name="TestHull2" parent="." instance=ExtResource("2_o4op6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+[node name="Boat" parent="." instance=ExtResource("2_7b1t4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
